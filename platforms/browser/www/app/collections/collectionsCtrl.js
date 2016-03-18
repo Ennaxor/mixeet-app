@@ -1,0 +1,5 @@
+webAppController.collectionsCtrl = function($scope){
+
+	
+
+};

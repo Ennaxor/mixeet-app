@@ -1,0 +1,2 @@
+webAppController.eventsCtrl = function($scope){
+};
