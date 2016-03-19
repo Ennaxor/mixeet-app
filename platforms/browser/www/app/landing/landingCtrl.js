@@ -12,9 +12,35 @@ webAppController.landingCtrl = function($scope, $interval, $location, $state, $h
 		window.location = "/";
 	}
 
+/*	document.addEventListener("deviceready", onDeviceReady, false);
+
+	function onDeviceReady() {
+	    console.log("Device ready");
+	}
+*/
+	app.initialize();
+
+	function isAvailable() {
+    	window.plugins.googleplus.isAvailable(function(avail) {alert(avail)});
+  	}
+
+  	$scope.isAvailable = isAvailable;
 
 	function signin(){
-		window.location = "https://mixeet.herokuapp.com/users/signin";
+		//window.location = "https://mixeet.herokuapp.com/users/signin";
+		document.addEventListener("deviceready", function(){
+			console.log("TESTTTTING");
+		    window.plugins.googleplus.trySilentLogin(
+		        {},
+		        function (obj) {
+		          //document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
+		        },
+		        function (msg) {
+		         // document.querySelector("#feedback").innerHTML = "error: " + msg;
+		        }
+		    );
+		
+		}, true);
 		
 	}
 
@@ -78,7 +104,7 @@ webAppController.landingCtrl = function($scope, $interval, $location, $state, $h
 	    $('.collapsible').collapsible();
 	    $('.slider').slider({
 	        full_width: true,
-	        height: 505,
+	        height: 515,
 	        indicators: false
 	    });
 	    $('.materialboxed').materialbox();

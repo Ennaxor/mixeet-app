@@ -1,3 +1,4 @@
+
 <div style="background-color:#273238; color:white; text-align:center;">
 <div class="slider">
     <ul class="slides">
@@ -29,11 +30,97 @@
     </ul>
     
 </div>
+<p id="feedback">not logged in</p>
 <a ng-click="signin()" class="waves-effect waves-light btn-large btn-mobile"><i class="fa fa-youtube right"></i>SIGN IN WITH</a>
- <p>A Final Degree Project by</p>
+ <p class="footer-info">A Final Degree Project by</p>
  <p class="footer-copyright">     
        Roxanne López van Dooren © 2016 Copyright 
-        
-      </p>
+ </p>
 
+ <div class="app">
+  <img id="image" style="position:absolute; top:10px; left:10px" src="" />
+
+  <h1>Google+</h1>
+
+  <div id="deviceready" class="blink">
+    <p class="event listening">Connecting to Device</p>
+    <p class="event received">Device is Ready</p>
+
+    <p id="feedback">not logged in</p>
+    <button onclick="isAvailable()">Available?</button>
+    <br/><br/>
+    <button onclick="login()">Login with Google+</button>
+    <br/><br/>
+    <button onclick="trySilentLogin()">Try silent login with Google+</button>
+    <br/><br/>
+    <button onclick="logout()">Logout</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button onclick="disconnect()">Disconnect</button>
+    <br/><br/>
+  </div>
 </div>
+
+ <script type="text/javascript">
+
+  app.initialize();
+  function isAvailable() {
+    console.log("probando a ver si esta disponible...");
+    if(window.plugins.googleplayservices) console.log("si esta");
+    else console.log("no esta");
+    window.plugins.googleplus.isAvailable(function(avail) {
+      console.log(avail);  
+      });
+  }
+  function login() {
+    window.plugins.googleplus.login(
+        {},
+        function (obj) {
+          document.querySelector("#image").src = obj.imageUrl;
+          document.querySelector("#image").style.visibility = 'visible';
+          document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
+        },
+        function (msg) {
+          document.querySelector("#feedback").innerHTML = "error: " + msg;
+        }
+    );
+  }
+  function trySilentLogin() {
+    window.plugins.googleplus.trySilentLogin(
+        {},
+        function (obj) {
+          document.querySelector("#image").src = obj.imageUrl;
+          document.querySelector("#image").style.visibility = 'visible';
+          document.querySelector("#feedback").innerHTML = "Silent hi, " + obj.displayName + ", " + obj.email;
+        },
+        function (msg) {
+          document.querySelector("#feedback").innerHTML = "error: " + msg;
+        }
+    );
+  }
+  function logout() {
+    window.plugins.googleplus.logout(
+        function (msg) {
+           console.log(msg); 
+          document.querySelector("#image").style.visibility = 'hidden';
+          document.querySelector("#feedback").innerHTML = msg;
+        }
+    );
+  }
+  function disconnect() {
+    window.plugins.googleplus.disconnect(
+        function (msg) {
+           console.log(msg); 
+          document.querySelector("#image").style.visibility = 'hidden';
+          document.querySelector("#feedback").innerHTML = msg;
+        }
+    );
+  }
+  window.onerror = function(what, line, file) {
+    alert(what + '; ' + line + '; ' + file);
+  };
+  function handleOpenURL (url) {
+    document.querySelector("#feedback").innerHTML = "App was opened by URL: " + url;
+  }
+</script>
+</div>
+
