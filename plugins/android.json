@@ -10,14 +10,10 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
-        "cordova-plugin-googleplayservices": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
         "cordova-plugin-googleplus": {
-            "CLIENT_ID": "261288555814-eg75qgd9vgb34jr2306qi0a2k0r27ji4.apps.googleusercontent.com",
+            "PACKAGE_NAME": "com.phonegap.helloworld"
+        },
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },

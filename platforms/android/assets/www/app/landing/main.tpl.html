@@ -30,35 +30,16 @@
     </ul>
     
 </div>
-<p id="feedback">not logged in</p>
-<a ng-click="signin()" class="waves-effect waves-light btn-large btn-mobile"><i class="fa fa-youtube right"></i>SIGN IN WITH</a>
- <p class="footer-info">A Final Degree Project by</p>
+
+ <a ng-click="login()" class="waves-effect waves-light btn-large btn-mobile" ><i class="fa fa-youtube right"></i>SIGN IN WITH</a>
+ <p class="">A Final Degree Project</p>
+ <p class="footer-info">for the University of Alicante made by</p>
  <p class="footer-copyright">     
        Roxanne López van Dooren © 2016 Copyright 
+       <br>
  </p>
 
- <div class="app">
-  <img id="image" style="position:absolute; top:10px; left:10px" src="" />
-
-  <h1>Google+</h1>
-
-  <div id="deviceready" class="blink">
-    <p class="event listening">Connecting to Device</p>
-    <p class="event received">Device is Ready</p>
-
-    <p id="feedback">not logged in</p>
-    <button onclick="isAvailable()">Available?</button>
-    <br/><br/>
-    <button onclick="login()">Login with Google+</button>
-    <br/><br/>
-    <button onclick="trySilentLogin()">Try silent login with Google+</button>
-    <br/><br/>
-    <button onclick="logout()">Logout</button>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button onclick="disconnect()">Disconnect</button>
-    <br/><br/>
-  </div>
-</div>
+ 
 
  <script type="text/javascript">
 
@@ -71,25 +52,13 @@
       console.log(avail);  
       });
   }
-  function login() {
-    window.plugins.googleplus.login(
-        {},
-        function (obj) {
-          document.querySelector("#image").src = obj.imageUrl;
-          document.querySelector("#image").style.visibility = 'visible';
-          document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
-        },
-        function (msg) {
-          document.querySelector("#feedback").innerHTML = "error: " + msg;
-        }
-    );
-  }
+  
   function trySilentLogin() {
     window.plugins.googleplus.trySilentLogin(
         {},
         function (obj) {
-          document.querySelector("#image").src = obj.imageUrl;
-          document.querySelector("#image").style.visibility = 'visible';
+          //document.querySelector("#image").src = obj.imageUrl;
+          //document.querySelector("#image").style.visibility = 'visible';
           document.querySelector("#feedback").innerHTML = "Silent hi, " + obj.displayName + ", " + obj.email;
         },
         function (msg) {
@@ -101,7 +70,7 @@
     window.plugins.googleplus.logout(
         function (msg) {
            console.log(msg); 
-          document.querySelector("#image").style.visibility = 'hidden';
+          //document.querySelector("#image").style.visibility = 'hidden';
           document.querySelector("#feedback").innerHTML = msg;
         }
     );
@@ -110,7 +79,7 @@
     window.plugins.googleplus.disconnect(
         function (msg) {
            console.log(msg); 
-          document.querySelector("#image").style.visibility = 'hidden';
+          //document.querySelector("#image").style.visibility = 'hidden';
           document.querySelector("#feedback").innerHTML = msg;
         }
     );

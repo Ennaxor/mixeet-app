@@ -20,10 +20,10 @@ webAppController.headerCtrl = function($scope, $location, $rootScope, $timeout, 
 	      }
 	  });
 
-	 $timeout(function(){
+	/* $timeout(function(){
 	  		var res = $scope.usr.name.split(" ");
 			$scope.usrname = res[0];
-	 }, 1000);
+	 }, 1000);*/
 
 	/* GO TO LOCATION */
 	$scope.goTo = function(page){
@@ -113,6 +113,17 @@ webAppController.headerCtrl = function($scope, $location, $rootScope, $timeout, 
 		
 	}
 
+	$scope.init = function(){		
+		//OBTENER SOLO EL NOMBRE, SIN APELLIDOS
+		var res = userSvc.getUser().name.split(" ");
+		$scope.usrname = res[0];
+		$scope.usrlastname = res[1];
+		$scope.usrlastname2 = res[2]+" "+res[3];
+		$scope.usremail = userSvc.getUser().email;
+		$scope.usrimage = userSvc.getUser().picture;
+	}
+	
+
 
 
 	$scope.selectConcreteSection = function(name){
@@ -171,28 +182,39 @@ webAppController.headerCtrl = function($scope, $location, $rootScope, $timeout, 
 		}
 	}
 
+
+	$scope.locationExtended = false;
+	$scope.climateExtended = false;
+	$scope.friendsExtended = false;
+
+	$scope.onEdit = false;
+
+	
+
+	$scope.logout = function(){
+		window.plugins.googleplus.disconnect(
+			function (msg) {
+				console.log(msg);
+				$rootScope.go('landing');
+			},
+			function(fail){
+				console.log(fail);
+			}
+		);
+	}
+
+
+
+	$(document).ready(function(){
+    $('.collapsible').collapsible({
+	      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+	    });
+	  });
+
 	
 	
 	// OBTENCIÓN DE DATOS DEL USUARIO (NOMBRE, EMAIL E IMAGEN)
-	$scope.getUserData = function(){
-		userSvc.me().get({}, function(result){
-			/*if(result.error){
-				//localStorage.removeItem("auth");	
-				//window.location = "/#/landing";
-			}
-			else{*/
-				console.log("AAAAAAAAAAAAAAAaa"+result);
-				$scope.usr = result;
-				//OBTENER SOLO EL NOMBRE, SIN APELLIDOS
-				var res = $scope.usr.name.split(" ");
-				$scope.usrname = res[0];
-			//}
-		}, function(){
-
-		});	
-	}
-
-	$scope.getUserData();
+	
 	
 
 

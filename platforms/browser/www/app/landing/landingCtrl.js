@@ -18,7 +18,6 @@ webAppController.landingCtrl = function($scope, $interval, $location, $state, $h
 	    console.log("Device ready");
 	}
 */
-	app.initialize();
 
 	function isAvailable() {
     	window.plugins.googleplus.isAvailable(function(avail) {alert(avail)});
@@ -26,12 +25,18 @@ webAppController.landingCtrl = function($scope, $interval, $location, $state, $h
 
   	$scope.isAvailable = isAvailable;
 
+  
 	function signin(){
 		//window.location = "https://mixeet.herokuapp.com/users/signin";
 		document.addEventListener("deviceready", function(){
-			console.log("TESTTTTING");
-		    window.plugins.googleplus.trySilentLogin(
-		        {},
+			console.log("device is ready ");
+
+					
+			
+		    window.plugins.googleplus.login(
+		        {
+		        	'offline': true
+		        },
 		        function (obj) {
 		          //document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
 		        },
@@ -40,7 +45,7 @@ webAppController.landingCtrl = function($scope, $interval, $location, $state, $h
 		        }
 		    );
 		
-		}, true);
+		}, false);
 		
 	}
 

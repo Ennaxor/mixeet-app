@@ -1,107 +1,31 @@
-webAppController.landingCtrl = function($scope, $interval, $location, $state, $http, $rootScope){
+webAppController.landingCtrl = function($scope, $interval, $location, $state, $http, $rootScope, userSvc){
 	
-	if($location.search().token){
-		var auth = {token:$location.search().token};
-		localStorage.setItem("auth", JSON.stringify(auth));
-		//$state.go("home");
-		window.location = "/";		
-	}
+	$scope.login = function(){
+		window.plugins.googleplus.login(
+	      {},
+	      function (user_data) {
+	        // For the purpose of this example I will store user data on local storage
+	        userSvc.setUser({
+	          userID: user_data.userId,
+	          name: user_data.displayName,
+	          email: user_data.email,
+	          picture: user_data.imageUrl,
+	          accessToken: user_data.accessToken,
+	          idToken: user_data.idToken
+	        });
 
-	//CONTROLAR QUE NO ENTREN AQUI SI ESTAN LOGUEADOS
-	if(localStorage.getItem("auth")){
-		window.location = "/";
-	}
+	        
 
-/*	document.addEventListener("deviceready", onDeviceReady, false);
-
-	function onDeviceReady() {
-	    console.log("Device ready");
-	}
-*/
-
-	function isAvailable() {
-    	window.plugins.googleplus.isAvailable(function(avail) {alert(avail)});
-  	}
-
-  	$scope.isAvailable = isAvailable;
-
-  
-	function signin(){
-		//window.location = "https://mixeet.herokuapp.com/users/signin";
-		document.addEventListener("deviceready", function(){
-			console.log("device is ready ");
-
-					
-			
-		    window.plugins.googleplus.login(
-		        {
-		        	'offline': true
-		        },
-		        function (obj) {
-		          //document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
-		        },
-		        function (msg) {
-		         // document.querySelector("#feedback").innerHTML = "error: " + msg;
-		        }
-		    );
+	        $rootScope.go('app.home');
+	      // document.querySelector("#feedback").innerHTML = "Hi, " + obj.displayName + ", " + obj.email;
+	      },
+	      function (msg) {
+	        //$ionicLoading.hide();
+	      }
+	    );
+	};
 		
-		}, false);
-		
-	}
 
-	$scope.signin = signin;
-
-
-	$scope.suggestions = [
-		{
-			title: 'at a party with your friends a saturday night'
-		},
-		{
-			title: 'at a romantic dinner with your couple'
-		},
-		{
-			title: 'at your favorite restaurant with your family'
-		},
-		{
-			title: 'when you wake up alone a monday morning'
-		}
-	];
-
-	$scope.sugg1 = true;
-	$scope.sugg2 = false;
-	$scope.sugg3 = false;
-	$scope.sugg4 = false;
-
-
-
-	/* MOLTO SHIT */
-
-	$interval(function(){
-		if($scope.sugg1){
-			$scope.sugg1 = false;
-			$scope.sugg2 = true;
-			$scope.sugg3 = false;
-			$scope.sugg4 = false;
-		} 
-		else if($scope.sugg2){
-			$scope.sugg1 = false;
-			$scope.sugg2 = false;
-			$scope.sugg3 = true;
-			$scope.sugg4 = false;
-		} 
-		else if($scope.sugg3){
-			$scope.sugg1 = false;
-			$scope.sugg2 = false;
-			$scope.sugg3 = false;
-			$scope.sugg4 = true;
-		} 
-		else if($scope.sugg4){
-			$scope.sugg1 = true;
-			$scope.sugg2 = false;
-			$scope.sugg3 = false;
-			$scope.sugg4 = false;
-		} 
-	}, 3500);
 
 	// SLIDER OPTIONS
 	$(document).ready(function() {

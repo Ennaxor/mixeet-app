@@ -49,6 +49,10 @@ html, body{
 }
 
 
+.primary-color{
+	background-color: #607D8B;
+}
+
 
 
 /* ------------------------------ LANDING PAGE -----------------------------------*/
@@ -375,11 +379,13 @@ html, body{
 
 .caption{
 	margin-top: 160px !important;
+	
 }
 
 .slider{
 	max-height: 515px !important;
 	z-index: 9 !important;
+	font-size: 22px !important;
 }
 
 footer{
@@ -395,7 +401,24 @@ footer{
 }
 
 .footer-info{
-	margin-top: -50px;
+	margin-top: -10px;
+}
+
+.footer-copyright{
+	padding-bottom: 30px;
+}
+
+.badge-mobile{
+	color: white !important;
+	font-size: 15px !important;
+	padding-top: 10px !important;
+	margin-right: 50px !important;
+	padding-bottom: 25px !important!;
+}
+
+.location-span{
+	font-style: italic;
+	padding-top: 155px;
 }
 
 .btn-mobile{
@@ -406,20 +429,39 @@ footer{
 	background-color: white !important;
 }
 
+.card-lastname{
+	margin-left: 80px;
+	top:-375px;
+}
+
+.mylocation{
+	i{
+		font-size: 25px !important;
+	}
+	color: white;
+	margin-top: 20px;
+	margin-right: 40px;
+}
+
+.fa-bars{
+	font-size: 20px;
+	padding-left: 25px;
+}
 /* ------------------------------ COMMON ----------------------------------- */
 
 header{
 	.nav-wrapper{
 		background-color: @light-accent-color;
-		padding-left: 30px;
+		
+		
 
 		.nav-section-a{			
-			padding-left: 150px;
 			display: inline-block;
 
 			span{
 				display: inline;
-				margin-top: -39px;
+				font-size: 20px;
+				margin-top: -30px;
 			}
 		}
 
@@ -456,6 +498,16 @@ header{
 	}
 }
 
+
+.myorange{
+	background-color: #FF5722;
+}
+
+
+
+.btn-xlarge{
+	width: 100%;
+}
 
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
@@ -689,7 +741,7 @@ header{
 }
 
 .collapsible-body{
-	padding-left: 80px;
+	padding-left: 0px;
 	border: none !important;
 }
 
@@ -725,7 +777,12 @@ header{
 
 /* ------------------------------ HOME PAGE / PROFILE ----------------------------------- */
 
+.circle{
+	width: 75px;
+}
+
 .collection-item{
+	font-size: 18px;
 	p{
 		padding-top: 5px;
 		font-style: italic;

@@ -12,10 +12,9 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-console": "1.0.3-dev",
     "cordova-plugin-whitelist": "1.2.1",
-    "cordova-plugin-googleplayservices": "19.0.3",
-    "cordova-plugin-googleplus": "4.0.8"
+    "cordova-plugin-googleplus": "4.0.8",
+    "cordova-plugin-console": "1.0.2"
 }
 // BOTTOM OF METADATA
 });

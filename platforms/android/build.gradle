@@ -22,7 +22,6 @@
 apply plugin: 'android'
 
 buildscript {
-
     repositories {
         mavenCentral()
     }

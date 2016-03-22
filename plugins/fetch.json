@@ -7,23 +7,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "git",
-            "url": "https://git-wip-us.apache.org/repos/asf/cordova-plugin-console.git",
-            "subdir": "."
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-googleplayservices": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-googleplayservices"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-googleplus": {
         "source": {
             "type": "registry",
@@ -31,7 +14,15 @@
         },
         "is_top_level": true,
         "variables": {
-            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.eg75qgd9vgb34jr2306qi0a2k0r27ji4-261288555814"
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.261288555814-eg75qgd9vgb34jr2306qi0a2k0r27ji4"
         }
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console@~1.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

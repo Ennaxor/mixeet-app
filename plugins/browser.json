@@ -7,16 +7,13 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.phonegap.helloworld"
-        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
-        "cordova-plugin-googleplayservices": {
+        "cordova-plugin-googleplus": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         },
-        "cordova-plugin-googleplus": {
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.phonegap.helloworld"
         }
     },

@@ -22,15 +22,18 @@ var mixeet = angular.module('mixeet', ['ui.router', 'ngResource'])
 		}
 		return result;
 	}
+
+	var h5m = (typeof html5Mode !== 'undefined') ? html5Mode : true;
+	$locationProvider.html5Mode(h5m);
 	
 	$stateProvider
 		.state('landing', {
 			url: "/landing",
 			onEnter: function ($state) {
-	            if (getJSONLocal("auth")) {
+	         /*   if (getJSONLocal("auth")) {
 	               // $rootScope.go("app.home");
 	               $state.go('app');
-	            }
+	            }*/
         	},
         	templateUrl: "app/landing/main.tpl.html",
 			controller: "landingCtrl"
@@ -38,10 +41,10 @@ var mixeet = angular.module('mixeet', ['ui.router', 'ngResource'])
 		.state('app', {
 			url: "/",
 			onEnter: function ($state) {
-	            if (!getJSONLocal("auth")) {
+	            /*if (!getJSONLocal("auth")) {
 	               // $rootScope.go("landing");
 	               $state.go('landing');
-	            }
+	            }*/
 	        },
 			templateUrl: "app/main.tpl.html",
 			controller: "headerCtrl"
